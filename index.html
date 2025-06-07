@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="th"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/remixicon.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/cat2.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Itim", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-slideIn {
+            animation: slideIn 0.6s ease forwards;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+    /* Gradient Animation */
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .gradient-text {
+        background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradientAnimation 5s ease infinite;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    .animate-pulse {
+        animation: pulse 2s ease-in-out infinite;
+    }
+            /* Animation for Progress Bar */
+    .progress-bar {
+        width: 0;
+        transition: width 2s ease-in-out;
+    }
+    </style>
+</head>
+<body class="bg-[#0F172A] text-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="container max-w-3xl mx-auto">
+        <div class="bg-[#1E293B] rounded-xl p-4 md:p-8 shadow-2xl border border-[#334155]">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+                <div class="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full border-4 border-pink-400">
+                    <img src="images/cat.jpg" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-bold text-pink-400 mb-2 animate-slideIn">Dissxyzlegendary</h1>
+                   <p class="text-sm md:text-base text-gray-400 mb-4 animate-slideIn" style="animation-delay: 0.2s;">Web Development</p>
+<div class="space-y-2 text-sm md:text-base text-gray-300">
+    <p class="flex items-center animate-slideIn" style="animation-delay: 0.3s;">
+        <i class="ri-map-pin-line mr-2 text-pink-400"></i>
+        <span class="hover:text-pink-400 transition-colors duration-300">ประเทศไทย</span>
+    </p>
+    <p class="flex items-center animate-slideIn" style="animation-delay: 0.4s;">
+        <i class="ri-building-line mr-2 text-blue-400"></i>
+        <span class="hover:text-blue-400 transition-colors duration-300">Thailand Co.</span>
+    </p>
+    <p class="flex items-center animate-slideIn" style="animation-delay: 0.5s;">
+        <i class="ri-book-line mr-2 text-green-400"></i>
+        <span class="hover:text-green-400 transition-colors duration-300">คอมพิวเตอร์</span>
+    </p>
+</div>
+                </div>
+            </div>
+<div class="text-center mb-6 md:mb-10 animate-float">
+    <div class="text-4xl md:text-6xl font-mono mb-2 md:mb-4 text-pink-400 animate-pulse" style="animation-duration: 2s;">
+        >>>
+    </div>
+    <h1 class="text-2xl md:text-3xl font-mono">
+        <span class="text-yellow-400">def</span> 
+        <span class="gradient-text">developer</span>()
+    </h1>
+</div>
+<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
+    <h2 class="text-lg md:text-xl font-mono text-pink-400 mb-4 md:mb-6"># Skills</h2>
+    <div class="space-y-4">
+        <!-- HTML5 -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-html5-fill text-xl text-orange-400"></i>
+                <p class="text-sm md:text-base text-gray-300">HTML5</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-orange-400 h-2.5 rounded-full progress-bar" data-width="79%" style="width: 79%;"></div>
+            </div>
+        </div>
+
+        <!-- CSS3 -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-css3-fill text-xl text-blue-400"></i>
+                <p class="text-sm md:text-base text-gray-300">CSS3</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="45%" style="width: 45%;"></div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-javascript-fill text-xl text-yellow-400"></i>
+                <p class="text-sm md:text-base text-gray-300">JavaScript</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-yellow-400 h-2.5 rounded-full progress-bar" data-width="43%" style="width: 43%;"></div>
+            </div>
+        </div>
+
+        <!-- SQL -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-database-2-fill text-xl text-green-400"></i>
+                <p class="text-sm md:text-base text-gray-300">SQL</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-green-400 h-2.5 rounded-full progress-bar" data-width="56%" style="width: 56%;"></div>
+            </div>
+        </div>
+
+        <!-- Python -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-code-box-fill text-xl text-pink-400"></i>
+                <p class="text-sm md:text-base text-gray-300">Python</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-pink-400 h-2.5 rounded-full progress-bar" data-width="75%" style="width: 75%;"></div>
+            </div>
+        </div>
+
+        <!-- TypeScript -->
+        <div class="skill-item">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ri-code-s-slash-fill text-xl text-blue-400"></i>
+                <p class="text-sm md:text-base text-gray-300">TypeScript</p>
+            </div>
+            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="43%" style="width: 43%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
+    <h2 class="text-lg md:text-xl font-mono text-blue-400 mb-4 md:mb-6"># Tools & Technologies</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+        <!-- React -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-reactjs-line text-xl md:text-2xl text-blue-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">React</p>
+        </div>
+        <!-- MongoDB -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-database-2-line text-xl md:text-2xl text-green-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">MongoDB</p>
+        </div>
+        <!-- GitHub -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-github-fill text-xl md:text-2xl text-purple-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">GitHub</p>
+        </div>
+        <!-- Terminal -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-terminal-box-fill text-xl md:text-2xl text-yellow-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Terminal</p>
+        </div>
+        <!-- VS Code -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-code-s-slash-fill text-xl md:text-2xl text-orange-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">VS Code</p>
+        </div>
+        <!-- Git -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-git-branch-fill text-xl md:text-2xl text-red-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Git</p>
+        </div>
+        <!-- AWS -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-cloud-fill text-xl md:text-2xl text-blue-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">AWS</p>
+        </div>
+        <!-- ServerVPN -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-shield-keyhole-line text-xl md:text-2xl text-green-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">ServerVPN</p>
+        </div>
+        <!-- Kali Linux -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-bug-line text-xl md:text-2xl text-purple-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Kali Linux</p>
+        </div>
+        <!-- Linux -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-blue-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Linux</p>
+        </div>
+        <!-- Windows -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-windows-fill text-xl md:text-2xl text-blue-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Windows</p>
+        </div>
+        <!-- Ubuntu -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-ubuntu-fill text-xl md:text-2xl text-orange-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Ubuntu</p>
+        </div>
+        <!-- CentOS -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-red-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">CentOS</p>
+        </div>
+        <!-- Fedora -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-blue-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Fedora</p>
+        </div>
+        <!-- Arch Linux -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-purple-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Arch Linux</p>
+        </div>
+        <!-- Nginx -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-green-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Nginx</p>
+        </div>
+        <!-- Apache -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-server-line text-xl md:text-2xl text-red-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Apache</p>
+        </div>
+        <!-- AI -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-brain-line text-xl md:text-2xl text-pink-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">AI</p>
+        </div>
+        <!-- Discord -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-discord-fill text-xl md:text-2xl text-purple-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Discord</p>
+        </div>
+        <!-- WebShop -->
+        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
+            <i class="ri-shopping-cart-line text-xl md:text-2xl text-orange-400"></i>
+            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">WebShop</p>
+        </div>
+    </div>
+</div>
+<div class="flex justify-center space-x-4 md:space-x-6">
+    </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/dissxyzlegendary" class="contact-link text-2xl md:text-3xl hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
+        <i class="ri-instagram-line"></i>
+    </a>
+</div>
+        </div>
+    </div>
+    <script>
+    // Function to animate progress bars
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-width');
+            bar.style.width = targetWidth;
+        });
+    }
+
+    // Trigger animation when the page loads
+    window.onload = animateProgressBars;
+</script>
+
+
+</body></html>
