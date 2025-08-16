@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
+    <link href="css/remixicon.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/cat2.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -13,7 +13,21 @@
             font-family: "Itim", serif;
             font-weight: 400;
             font-style: normal;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
+        
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
         @keyframes slideIn {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -295,22 +309,63 @@
 </div>
         </div>
     </div>
+    
     <script>
     // Function to animate progress bars
     function animateProgressBars() {
         const progressBars = document.querySelectorAll('.progress-bar');
         progressBars.forEach(bar => {
             const targetWidth = bar.getAttribute('data-width');
-            // Add delay to make animation visible
             setTimeout(() => {
                 bar.style.width = targetWidth;
             }, 500);
         });
     }
 
-    // Trigger animation when the page loads
-    window.addEventListener('load', animateProgressBars);
-</script>
+    // Copy protection functions
+    document.addEventListener('DOMContentLoaded', function() {
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
 
+        // Disable text selection with mouse
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
 
+        // Disable keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) ||
+                (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
+                (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Save Page)
+                (e.ctrlKey && e.keyCode === 65) || // Ctrl+A (Select All)
+                (e.ctrlKey && e.keyCode === 67) || // Ctrl+C (Copy)
+                (e.ctrlKey && e.keyCode === 88) || // Ctrl+X (Cut)
+                (e.ctrlKey && e.keyCode === 86) || // Ctrl+V (Paste)
+                (e.ctrlKey && e.keyCode === 80)) { // Ctrl+P (Print)
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Clear console periodically
+        setInterval(function() {
+            console.clear();
+        }, 1000);
+
+        // Trigger animation when the page loads
+        animateProgressBars();
+    });
+    </script>
 </body></html>
