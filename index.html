@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="th"><head>
+<!DOCTYPE html>
+<html lang="th">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="css/remixicon.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/cat2.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
@@ -88,14 +89,106 @@
         width: 0;
         transition: width 2s ease-in-out;
     }
+    
+    /* Custom Cursor */
+    * {
+        cursor: url('images/nat1047.cur'), auto;
+    }
+    
+    a, button, .tool-card {
+        cursor: url('images/nat1047.cur'), pointer !important;
+    }
+    
+    /* Cursor Trail Effect - ปรับให้หายช้าๆ และขยับช้าๆ */
+    .cursor-trail {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.9;
+        transform: translate(-50%, -50%);
+        /* เพิ่ม transition ให้เคลื่อนไหวนุ่มนวล */
+        transition: all 0.3s ease-out;
+        /* เปลี่ยนเวลา animation จาก 4s เป็น 8s ให้หายช้าๆ */
+        animation: simpleTrailFade 8s ease-out forwards, smoothRotateX 3s linear infinite;
+    }
+    
+    /* Create simple X shape */
+    .cursor-trail::before,
+    .cursor-trail::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 2px;
+        background: linear-gradient(90deg, #ff00ff, #8000ff);
+        transform: translate(-50%, -50%);
+        border-radius: 1px;
+        box-shadow: 0 0 6px rgba(255, 0, 255, 0.6);
+    }
+    
+    .cursor-trail::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    
+    .cursor-trail::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    
+    /* Simple X variations */
+    .cursor-trail:nth-child(even)::before,
+    .cursor-trail:nth-child(even)::after {
+        width: 8px;
+        height: 1.5px;
+        background: linear-gradient(90deg, #ff80ff, #ff00ff);
+        box-shadow: 0 0 4px rgba(255, 128, 255, 0.5);
+    }
+    
+    .cursor-trail:nth-child(3n)::before,
+    .cursor-trail:nth-child(3n)::after {
+        width: 12px;
+        height: 2.5px;
+        background: linear-gradient(90deg, #8000ff, #6000cc);
+        box-shadow: 0 0 8px rgba(128, 0, 255, 0.4);
+    }
+    
+    /* ปรับ animation ให้หายช้าๆ */
+    @keyframes simpleTrailFade {
+        0% { 
+            opacity: 0.9; 
+            transform: translate(-50%, -50%) scale(1);
+        }
+        10% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        90% {
+            opacity: 0.7;
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+        100% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(0.4);
+        }
+    }
+    
+    /* ปรับการหมุนให้ช้าลง */
+    @keyframes smoothRotateX {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
     </style>
 </head>
-<body class="bg-[#0F172A] text-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-[#0F172A] text-gray-100 min-h-screen flex flex-col">
+    <div class="flex-1 flex items-center justify-center p-4">
     <div class="container max-w-3xl mx-auto">
         <div class="bg-[#1E293B] rounded-xl p-4 md:p-8 shadow-2xl border border-[#334155]">
             <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
                 <div class="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full border-4 border-pink-400">
-                     <img src="images/cat.jpg" alt="Profile" class="w-full h-full object-cover">
+                     <img src="images/a.jpg" alt="Profile" class="w-full h-full object-cover">
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h1 class="text-3xl md:text-4xl font-bold text-pink-400 mb-2 animate-slideIn">Dissxyzlegendary</h1>
@@ -198,17 +291,7 @@
 
 <div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
     <h2 class="text-lg md:text-xl font-mono text-blue-400 mb-4 md:mb-6"># Tools & Technologies</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-        <!-- React -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-reactjs-line text-xl md:text-2xl text-blue-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">React</p>
-        </div>
-        <!-- MongoDB -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-database-2-line text-xl md:text-2xl text-green-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">MongoDB</p>
-        </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 justify-items-center">
         <!-- GitHub -->
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-github-fill text-xl md:text-2xl text-purple-400"></i>
@@ -224,84 +307,40 @@
             <i class="ri-code-s-slash-fill text-xl md:text-2xl text-orange-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">VS Code</p>
         </div>
-        <!-- Git -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-git-branch-fill text-xl md:text-2xl text-red-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Git</p>
-        </div>
-        <!-- AWS -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-cloud-fill text-xl md:text-2xl text-blue-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">AWS</p>
-        </div>
-        <!-- ServerVPN -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-shield-keyhole-line text-xl md:text-2xl text-green-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">ServerVPN</p>
-        </div>
-        <!-- Kali Linux -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-bug-line text-xl md:text-2xl text-purple-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Kali Linux</p>
-        </div>
-        <!-- Linux -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-blue-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Linux</p>
-        </div>
         <!-- Windows -->
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-windows-fill text-xl md:text-2xl text-blue-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Windows</p>
-        </div>
-        <!-- Ubuntu -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-ubuntu-fill text-xl md:text-2xl text-orange-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Ubuntu</p>
-        </div>
-        <!-- CentOS -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-red-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">CentOS</p>
-        </div>
-        <!-- Fedora -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-blue-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Fedora</p>
-        </div>
-        <!-- Arch Linux -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-purple-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Arch Linux</p>
-        </div>
-        <!-- Nginx -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-green-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Nginx</p>
-        </div>
-        <!-- Apache -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-server-line text-xl md:text-2xl text-red-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Apache</p>
-        </div>
-        <!-- AI -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-brain-line text-xl md:text-2xl text-pink-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">AI</p>
         </div>
         <!-- Discord -->
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-discord-fill text-xl md:text-2xl text-purple-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Discord</p>
         </div>
-        <!-- WebShop -->
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-shopping-cart-line text-xl md:text-2xl text-orange-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">WebShop</p>
+    </div>
+</div>
+
+<!-- Spotify Widget -->
+<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
+    <div class="max-w-2xl mx-auto">
+        <!-- Spotify Embed Container -->
+        <div id="spotifyContainer" class="bg-[#1A1A1A] rounded-xl p-4 shadow-lg border border-[#2A2A2A]">
+            <!-- Default Spotify Embed -->
+            <iframe id="spotifyEmbed" 
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/playlist/7ahndGZ8vHDYZ2oCIsv8rm?utm_source=generator" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+            </iframe>
         </div>
     </div>
 </div>
-<div class="flex justify-center space-x-4 md:space-x-6">
+
+<div class="flex flex-col items-center space-y-4">
     <!-- Instagram -->
     <a href="https://www.instagram.com/dissxyzlegendary" class="contact-link text-2xl md:text-3xl hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
         <i class="ri-instagram-line"></i>
@@ -309,8 +348,68 @@
 </div>
         </div>
     </div>
+    </div>
+    
+    <!-- Digital Clock Outside Main Container, Below IG -->
+    <div class="text-center mt-4 pb-4">
+        <div class="text-white text-base font-mono" id="digitalClock">
+            00:41:45
+        </div>
+    </div>
     
     <script>
+    // Cursor Trail Effect - ปรับให้ขยับช้าๆ
+    let trails = [];
+    let trailCount = 0;
+    let mouseX = 1;
+    let mouseY = 1;
+    
+    // Track mouse position
+    document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Create trails at intervals - เปลี่ยนจาก 80ms เป็น 200ms ให้ช้าลง
+    setInterval(function() {
+        if (mouseX !== 0 && mouseY !== 0) {
+            // Create trail dot
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            
+            // Add some random offset for more natural look
+            const offsetX = (Math.random() - 0.5) * 6;
+            const offsetY = (Math.random() - 0.5) * 6;
+            
+            trail.style.left = (mouseX + offsetX) + 'px';
+            trail.style.top = (mouseY + offsetY) + 'px';
+            
+            // Add variation class for different sizes
+            if (trailCount % 3 === 0) trail.classList.add('large');
+            else if (trailCount % 2 === 0) trail.classList.add('small');
+            
+            document.body.appendChild(trail);
+            trails.push(trail);
+            trailCount++;
+            
+            // Remove trail after animation - เปลี่ยนจาก 4000ms เป็น 8000ms ให้ตรงกับ animation
+            setTimeout(() => {
+                if (trail.parentNode) {
+                    trail.parentNode.removeChild(trail);
+                }
+                trails = trails.filter(t => t !== trail);
+            }, 4000);
+            
+            // Limit number of trails
+            if (trails.length > 20) {
+                const oldTrail = trails.shift();
+                if (oldTrail.parentNode) {
+                    oldTrail.parentNode.removeChild(oldTrail);
+                }
+            }
+        }
+    }, 80); // เปลี่ยนจาก 80ms เป็น 200ms ให้สร้าง trail ช้าลง
+
     // Function to animate progress bars
     function animateProgressBars() {
         const progressBars = document.querySelectorAll('.progress-bar');
@@ -322,8 +421,25 @@
         });
     }
 
+    // Digital Clock Function
+    function updateClock() {
+        const now = new Date();
+        
+        // Format time with leading zeros
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        // Update clock display
+        document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
     // Copy protection functions
     document.addEventListener('DOMContentLoaded', function() {
+        // Start the clock
+        updateClock();
+        setInterval(updateClock, 1000);
+        
         // Disable right-click context menu
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -368,4 +484,5 @@
         animateProgressBars();
     });
     </script>
-</body></html>
+</body>
+</html>
