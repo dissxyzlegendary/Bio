@@ -47,7 +47,7 @@
         .skill-bar {
             transition: width 2s ease-in-out;
         }
-    /* Gradient Animation */
+
     @keyframes gradientAnimation {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -63,7 +63,6 @@
         animation: gradientAnimation 5s ease infinite;
     }
 
-    /* Floating Animation */
     @keyframes float {
         0% { transform: translateY(0); }
         50% { transform: translateY(-10px); }
@@ -74,7 +73,6 @@
         animation: float 3s ease-in-out infinite;
     }
 
-    /* Pulse Animation */
     @keyframes pulse {
         0% { opacity: 1; }
         50% { opacity: 0.5; }
@@ -84,13 +82,12 @@
     .animate-pulse {
         animation: pulse 2s ease-in-out infinite;
     }
-            /* Animation for Progress Bar */
+
     .progress-bar {
         width: 0;
         transition: width 2s ease-in-out;
     }
     
-    /* Custom Cursor */
     * {
         cursor: url('images/ka.cur'), auto;
     }
@@ -99,7 +96,6 @@
         cursor: url('images/ka.cur'), pointer !important;
     }
     
-    /* Cursor Trail Effect - ปรับให้หายช้าๆ และขยับช้าๆ */
     .cursor-trail {
         position: fixed;
         width: 12px;
@@ -108,13 +104,12 @@
         z-index: 9999;
         opacity: 0.9;
         transform: translate(-50%, -50%);
-        /* เพิ่ม transition ให้เคลื่อนไหวนุ่มนวล */
+
         transition: all 0.3s ease-out;
-        /* เปลี่ยนเวลา animation จาก 4s เป็น 8s ให้หายช้าๆ */
+
         animation: simpleTrailFade 8s ease-out forwards, smoothRotateX 3s linear infinite;
     }
     
-    /* Create simple X shape */
     .cursor-trail::before,
     .cursor-trail::after {
         content: '';
@@ -137,7 +132,6 @@
         transform: translate(-50%, -50%) rotate(-45deg);
     }
     
-    /* Simple X variations */
     .cursor-trail:nth-child(even)::before,
     .cursor-trail:nth-child(even)::after {
         width: 8px;
@@ -154,7 +148,6 @@
         box-shadow: 0 0 8px rgba(128, 0, 255, 0.4);
     }
     
-    /* ปรับ animation ให้หายช้าๆ */
     @keyframes simpleTrailFade {
         0% { 
             opacity: 0.9; 
@@ -174,7 +167,6 @@
         }
     }
     
-    /* ปรับการหมุนให้ช้าลง */
     @keyframes smoothRotateX {
         0% { transform: translate(-50%, -50%) rotate(0deg); }
         100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -221,7 +213,7 @@
 <div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
     <h2 class="text-lg md:text-xl font-mono text-pink-400 mb-4 md:mb-6"># Skills</h2>
     <div class="space-y-4">
-        <!-- HTML5 -->
+
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-html5-fill text-xl text-orange-400"></i>
@@ -232,7 +224,6 @@
             </div>
         </div>
 
-        <!-- CSS3 -->
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-css3-fill text-xl text-blue-400"></i>
@@ -243,7 +234,6 @@
             </div>
         </div>
 
-        <!-- JavaScript -->
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-javascript-fill text-xl text-yellow-400"></i>
@@ -254,7 +244,6 @@
             </div>
         </div>
 
-        <!-- SQL -->
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-database-2-fill text-xl text-green-400"></i>
@@ -265,7 +254,6 @@
             </div>
         </div>
 
-        <!-- Python -->
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-code-box-fill text-xl text-pink-400"></i>
@@ -276,7 +264,6 @@
             </div>
         </div>
 
-        <!-- TypeScript -->
         <div class="skill-item">
             <div class="flex items-center gap-2 mb-2">
                 <i class="ri-code-s-slash-fill text-xl text-blue-400"></i>
@@ -292,27 +279,27 @@
 <div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
     <h2 class="text-lg md:text-xl font-mono text-blue-400 mb-4 md:mb-6"># Tools & Technologies</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 justify-items-center">
-        <!-- GitHub -->
+
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-github-fill text-xl md:text-2xl text-purple-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">GitHub</p>
         </div>
-        <!-- Terminal -->
+
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-terminal-box-fill text-xl md:text-2xl text-yellow-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Terminal</p>
         </div>
-        <!-- VS Code -->
+
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-code-s-slash-fill text-xl md:text-2xl text-orange-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">VS Code</p>
         </div>
-        <!-- Windows -->
+
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-windows-fill text-xl md:text-2xl text-blue-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Windows</p>
         </div>
-        <!-- Discord -->
+
         <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
             <i class="ri-discord-fill text-xl md:text-2xl text-purple-400"></i>
             <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Discord</p>
@@ -320,12 +307,11 @@
     </div>
 </div>
 
-<!-- Spotify Widget -->
 <div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
     <div class="max-w-2xl mx-auto">
-        <!-- Spotify Embed Container -->
+
         <div id="spotifyContainer" class="bg-[#1A1A1A] rounded-xl p-4 shadow-lg border border-[#2A2A2A]">
-            <!-- Default Spotify Embed -->
+
             <iframe id="spotifyEmbed" 
                     style="border-radius:12px" 
                     src="https://open.spotify.com/embed/playlist/7ahndGZ8vHDYZ2oCIsv8rm?utm_source=generator" 
@@ -341,7 +327,7 @@
 </div>
 
 <div class="flex flex-col items-center space-y-4">
-    <!-- Instagram -->
+
     <a href="https://www.instagram.com/dissxyzlegendary" class="contact-link text-2xl md:text-3xl hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
         <i class="ri-instagram-line"></i>
     </a>
@@ -350,7 +336,6 @@
     </div>
     </div>
     
-    <!-- Digital Clock Outside Main Container, Below IG -->
     <div class="text-center mt-4 pb-4">
         <div class="text-white text-base font-mono" id="digitalClock">
             00:41:45
@@ -358,33 +343,29 @@
     </div>
     
     <script>
-    // Cursor Trail Effect - ปรับให้ขยับช้าๆ
+
     let trails = [];
     let trailCount = 0;
     let mouseX = 1;
     let mouseY = 1;
     
-    // Track mouse position
     document.addEventListener('mousemove', function(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
     
-    // Create trails at intervals - เปลี่ยนจาก 80ms เป็น 200ms ให้ช้าลง
     setInterval(function() {
         if (mouseX !== 0 && mouseY !== 0) {
-            // Create trail dot
+
             const trail = document.createElement('div');
             trail.className = 'cursor-trail';
             
-            // Add some random offset for more natural look
             const offsetX = (Math.random() - 0.5) * 6;
             const offsetY = (Math.random() - 0.5) * 6;
             
             trail.style.left = (mouseX + offsetX) + 'px';
             trail.style.top = (mouseY + offsetY) + 'px';
             
-            // Add variation class for different sizes
             if (trailCount % 3 === 0) trail.classList.add('large');
             else if (trailCount % 2 === 0) trail.classList.add('small');
             
@@ -392,7 +373,6 @@
             trails.push(trail);
             trailCount++;
             
-            // Remove trail after animation - เปลี่ยนจาก 4000ms เป็น 8000ms ให้ตรงกับ animation
             setTimeout(() => {
                 if (trail.parentNode) {
                     trail.parentNode.removeChild(trail);
@@ -400,7 +380,6 @@
                 trails = trails.filter(t => t !== trail);
             }, 4000);
             
-            // Limit number of trails
             if (trails.length > 20) {
                 const oldTrail = trails.shift();
                 if (oldTrail.parentNode) {
@@ -408,9 +387,8 @@
                 }
             }
         }
-    }, 80); // เปลี่ยนจาก 80ms เป็น 200ms ให้สร้าง trail ช้าลง
+    }, 80);
 
-    // Function to animate progress bars
     function animateProgressBars() {
         const progressBars = document.querySelectorAll('.progress-bar');
         progressBars.forEach(bar => {
@@ -421,66 +399,56 @@
         });
     }
 
-    // Digital Clock Function
     function updateClock() {
         const now = new Date();
         
-        // Format time with leading zeros
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         
-        // Update clock display
         document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds}`;
     }
 
-    // Copy protection functions
     document.addEventListener('DOMContentLoaded', function() {
-        // Start the clock
+
         updateClock();
         setInterval(updateClock, 1000);
         
-        // Disable right-click context menu
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         });
 
-        // Disable text selection with mouse
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
             return false;
         });
 
-        // Disable keyboard shortcuts
         document.addEventListener('keydown', function(e) {
-            // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+
             if (e.keyCode === 123 || 
                 (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) ||
-                (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
-                (e.ctrlKey && e.keyCode === 83) || // Ctrl+S (Save Page)
-                (e.ctrlKey && e.keyCode === 65) || // Ctrl+A (Select All)
-                (e.ctrlKey && e.keyCode === 67) || // Ctrl+C (Copy)
-                (e.ctrlKey && e.keyCode === 88) || // Ctrl+X (Cut)
-                (e.ctrlKey && e.keyCode === 86) || // Ctrl+V (Paste)
-                (e.ctrlKey && e.keyCode === 80)) { // Ctrl+P (Print)
+                (e.ctrlKey && e.keyCode === 85) ||
+                (e.ctrlKey && e.keyCode === 83) || 
+                (e.ctrlKey && e.keyCode === 65) || 
+                (e.ctrlKey && e.keyCode === 67) || 
+                (e.ctrlKey && e.keyCode === 88) || 
+                (e.ctrlKey && e.keyCode === 86) || 
+                (e.ctrlKey && e.keyCode === 80)) { 
                 e.preventDefault();
                 return false;
             }
         });
 
-        // Disable drag and drop
         document.addEventListener('dragstart', function(e) {
             e.preventDefault();
             return false;
         });
 
-        // Clear console periodically
         setInterval(function() {
             console.clear();
         }, 1000);
 
-        // Trigger animation when the page loads
         animateProgressBars();
     });
     </script>
