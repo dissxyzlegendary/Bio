@@ -27,311 +27,712 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+            background-size: 400% 400%;
+            animation: backgroundShift 15s ease infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
+        /* Enhanced animations */
         @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { 
+                transform: translateY(30px) scale(0.9); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
         }
+
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-8px) rotate(1deg); }
+            66% { transform: translateY(4px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1) rotate(180deg); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(236, 72, 153, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 30px rgba(236, 72, 153, 0.4); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #f59e0b; }
+        }
+
         .animate-slideIn {
-            animation: slideIn 0.6s ease forwards;
+            animation: slideIn 0.8s ease forwards;
         }
+        
         .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        .skill-bar {
-            transition: width 2s ease-in-out;
+            animation: float 4s ease-in-out infinite;
         }
 
-    @keyframes gradientAnimation {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    .gradient-text {
-        background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6);
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: gradientAnimation 5s ease infinite;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0); }
-    }
-
-    .animate-float {
-        animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.5; }
-        100% { opacity: 1; }
-    }
-
-    .animate-pulse {
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    .progress-bar {
-        width: 0;
-        transition: width 2s ease-in-out;
-    }
-    
-    * {
-        cursor: url('images/asd.cur'), auto;
-    }
-    
-    a, button, .tool-card {
-        cursor: url('images/asc.ani'), pointer !important;
-    }
-    
-    .cursor-trail {
-        position: fixed;
-        width: 12px;
-        height: 12px;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.9;
-        transform: translate(-50%, -50%);
-
-        transition: all 0.3s ease-out;
-
-        animation: simpleTrailFade 8s ease-out forwards, smoothRotateX 3s linear infinite;
-    }
-    
-    .cursor-trail::before,
-    .cursor-trail::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 10px;
-        height: 2px;
-        background: linear-gradient(90deg, #ff00ff, #8000ff);
-        transform: translate(-50%, -50%);
-        border-radius: 1px;
-        box-shadow: 0 0 6px rgba(255, 0, 255, 0.6);
-    }
-    
-    .cursor-trail::before {
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-    
-    .cursor-trail::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    
-    .cursor-trail:nth-child(even)::before,
-    .cursor-trail:nth-child(even)::after {
-        width: 8px;
-        height: 1.5px;
-        background: linear-gradient(90deg, #ff80ff, #ff00ff);
-        box-shadow: 0 0 4px rgba(255, 128, 255, 0.5);
-    }
-    
-    .cursor-trail:nth-child(3n)::before,
-    .cursor-trail:nth-child(3n)::after {
-        width: 12px;
-        height: 2.5px;
-        background: linear-gradient(90deg, #8000ff, #6000cc);
-        box-shadow: 0 0 8px rgba(128, 0, 255, 0.4);
-    }
-    
-    @keyframes simpleTrailFade {
-        0% { 
-            opacity: 0.9; 
-            transform: translate(-50%, -50%) scale(1);
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
         }
-        10% {
+
+        /* Profile image enhancements */
+        .profile-image {
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: brightness(1.2) saturate(1.3);
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-image:hover::before {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1.05);
+            animation: spin 2s linear infinite;
         }
-        90% {
-            opacity: 0.7;
-            transform: translate(-50%, -50%) scale(0.9);
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        100% { 
-            opacity: 0; 
-            transform: translate(-50%, -50%) scale(0.4);
+
+        /* Enhanced gradient text */
+        .gradient-text {
+            background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6, #10b981);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientAnimation 3s ease infinite;
+            position: relative;
         }
-    }
-    
-    @keyframes smoothRotateX {
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Enhanced cards */
+        .enhanced-card {
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            border: 1px solid #334155;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .enhanced-card:hover::before {
+            left: 100%;
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #ec4899;
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Skill bars enhancement */
+        .skill-item {
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .skill-item:hover {
+            background: rgba(236, 72, 153, 0.1);
+            transform: translateX(10px);
+        }
+
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+            transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Tool cards enhancement */
+        .tool-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .tool-card:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) rotate(5deg) scale(1.1);
+            background: linear-gradient(145deg, #2E3B4B, #1E293B);
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+        }
+
+        .tool-card i {
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover i {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        /* Developer title enhancement */
+        .dev-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dev-title::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #f59e0b;
+        }
+
+        /* Contact link enhancement */
+        .contact-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .contact-link:hover::before {
+            width: 60px;
+            height: 60px;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px) scale(1.2);
+            filter: drop-shadow(0 5px 15px rgba(236, 72, 153, 0.5));
+        }
+
+        /* Spotify container enhancement */
+        .spotify-container {
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .spotify-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(29, 185, 84, 0.3);
+        }
+
+        /* Info items enhancement */
+        .info-item {
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .info-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(236, 72, 153, 0.1), transparent);
+            transition: width 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .info-item:hover::before {
+            width: 100%;
+        }
+
+        .info-item:hover {
+            transform: translateX(8px);
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(236, 72, 153, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Clock enhancement */
+        .digital-clock {
+            background: linear-gradient(45deg, #1E293B, #0F172A);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .digital-clock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .digital-clock:hover::before {
+            left: 100%;
+        }
+
+        .digital-clock:hover {
+            transform: scale(1.05);
+            border-color: #ec4899;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Glitch effect for main title */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:hover::before,
+        .glitch:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:hover::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff0000;
+            z-index: -1;
+        }
+
+        .glitch:hover::after {
+            animation: glitch-2 0.5s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translateX(0);
+            }
+            15%, 49% {
+                transform: translateX(-2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translateX(0);
+            }
+            21%, 62% {
+                transform: translateX(2px);
+            }
+        }
+
+        /* Matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            opacity: 0.03;
+        }
+
+        /* Enhanced cursor trail */
+        .cursor-trail {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.9;
+            transform: translate(-50%, -50%);
+            transition: all 0.2s ease-out;
+            animation: trailFade 3s ease-out forwards, trailRotate 2s linear infinite;
+        }
+        
+        .cursor-trail::before,
+        .cursor-trail::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #8000ff, #00ffff);
+            transform: translate(-50%, -50%);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+        }
+        
+        .cursor-trail::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        .cursor-trail::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        @keyframes trailFade {
+            0% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+        }
+
+        @keyframes trailRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Neon text effect */
+        .neon-text {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px currentColor;
+            transition: all 0.3s ease;
+        }
+
+        .neon-text:hover {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px currentColor,
+                0 0 25px currentColor,
+                0 0 30px currentColor;
+        }
+
+        /* Holographic effect */
+        .holographic {
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 70%);
+            background-size: 200% 200%;
+            animation: holographicShine 3s ease infinite;
+        }
+
+        @keyframes holographicShine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Tilt effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .tilt-card:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+        }
+
+        /* Percentage display */
+        .skill-percentage {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #ffffff;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-item:hover .skill-percentage {
+            opacity: 1;
+        }
+
+        /* Breathing animation for main container */
+        .breathing-container {
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+        }
 
     </style>
 </head>
 <body class="bg-[#0F172A] text-gray-100 min-h-screen flex flex-col">
+    <!-- Matrix background -->
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
     <div class="flex-1 flex items-center justify-center p-4">
     <div class="container max-w-3xl mx-auto">
-        <div class="bg-[#1E293B] rounded-xl p-4 md:p-8 shadow-2xl border border-[#334155]">
+        <div class="enhanced-card breathing-container rounded-xl p-4 md:p-8 shadow-2xl">
             <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
-                <div class="w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full border-4 border-pink-400">
+                <div class="profile-image w-32 h-32 md:w-40 md:h-40 overflow-hidden rounded-full border-4 border-pink-400 animate-glow">
                      <img src="images/a.jpg" alt="Profile" class="w-full h-full object-cover">
                 </div>
                 <div class="flex-1 text-center md:text-left">
-                    <h1 class="text-3xl md:text-4xl font-bold text-pink-400 mb-2 animate-slideIn">Dissxyzlegendary</h1>
-                   <p class="text-sm md:text-base text-gray-400 mb-4 animate-slideIn" style="animation-delay: 0.2s;">Web Development</p>
-<div class="space-y-2 text-sm md:text-base text-gray-300">
-    <p class="flex items-center animate-slideIn" style="animation-delay: 0.3s;">
-        <i class="ri-map-pin-line mr-2 text-pink-400"></i>
-        <span class="hover:text-pink-400 transition-colors duration-300">ประเทศไทย</span>
-    </p>
-    <p class="flex items-center animate-slideIn" style="animation-delay: 0.4s;">
-        <i class="ri-building-line mr-2 text-blue-400"></i>
-        <span class="hover:text-blue-400 transition-colors duration-300">Thailand Co.</span>
-    </p>
-    <p class="flex items-center animate-slideIn" style="animation-delay: 0.5s;">
-        <i class="ri-book-line mr-2 text-green-400"></i>
-        <span class="hover:text-green-400 transition-colors duration-300">คอมพิวเตอร์</span>
-    </p>
-</div>
+                    <h1 class="glitch text-3xl md:text-4xl font-bold text-pink-400 mb-2 animate-slideIn neon-text" data-text="Dissxyzlegendary">
+                        Dissxyzlegendary
+                    </h1>
+                    <p class="text-sm md:text-base text-gray-400 mb-4 animate-slideIn" style="animation-delay: 0.2s;">
+                        <span class="gradient-text">Web Development</span>
+                    </p>
+                    <div class="space-y-2 text-sm md:text-base text-gray-300">
+                        <p class="info-item flex items-center animate-slideIn" style="animation-delay: 0.3s;">
+                            <i class="ri-map-pin-line mr-2 text-pink-400 neon-text"></i>
+                            <span class="hover:text-pink-400 transition-colors duration-300">ประเทศไทย</span>
+                        </p>
+                        <p class="info-item flex items-center animate-slideIn" style="animation-delay: 0.4s;">
+                            <i class="ri-building-line mr-2 text-blue-400 neon-text"></i>
+                            <span class="hover:text-blue-400 transition-colors duration-300">Thailand Co.</span>
+                        </p>
+                        <p class="info-item flex items-center animate-slideIn" style="animation-delay: 0.5s;">
+                            <i class="ri-book-line mr-2 text-green-400 neon-text"></i>
+                            <span class="hover:text-green-400 transition-colors duration-300">คอมพิวเตอร์</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-<div class="text-center mb-6 md:mb-10 animate-float">
-    <div class="text-4xl md:text-6xl font-mono mb-2 md:mb-4 text-pink-400 animate-pulse" style="animation-duration: 2s;">
-        >>>
-    </div>
-    <h1 class="text-2xl md:text-3xl font-mono">
-        <span class="text-yellow-400">def</span> 
-        <span class="gradient-text">developer</span>()
-    </h1>
-</div>
-<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
-    <h2 class="text-lg md:text-xl font-mono text-pink-400 mb-4 md:mb-6"># Skills</h2>
-    <div class="space-y-4">
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-html5-fill text-xl text-orange-400"></i>
-                <p class="text-sm md:text-base text-gray-300">HTML5</p>
+            <div class="text-center mb-6 md:mb-10 animate-float">
+                <div class="text-4xl md:text-6xl font-mono mb-2 md:mb-4 text-pink-400 neon-text animate-pulse" style="animation-duration: 2s;">
+                    >>>
+                </div>
+                <h1 class="text-2xl md:text-3xl font-mono dev-title">
+                    <span class="text-yellow-400 neon-text">def</span> 
+                    <span class="gradient-text">developer</span>()
+                </h1>
             </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-orange-400 h-2.5 rounded-full progress-bar" data-width="79%"></div>
+
+            <div class="enhanced-card tilt-card p-4 md:p-6 rounded-lg mb-6 md:mb-8 holographic">
+                <h2 class="text-lg md:text-xl font-mono text-pink-400 mb-4 md:mb-6 neon-text"># Skills</h2>
+                <div class="space-y-4">
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-html5-fill text-xl text-orange-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">HTML5</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-orange-400 to-orange-500 h-3 rounded-full progress-bar" data-width="79%"></div>
+                            <span class="skill-percentage">79%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-css3-fill text-xl text-blue-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">CSS3</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-3 rounded-full progress-bar" data-width="45%"></div>
+                            <span class="skill-percentage">45%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-javascript-fill text-xl text-yellow-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">JavaScript</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 h-3 rounded-full progress-bar" data-width="43%"></div>
+                            <span class="skill-percentage">43%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-database-2-fill text-xl text-green-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">SQL</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-green-400 to-green-500 h-3 rounded-full progress-bar" data-width="56%"></div>
+                            <span class="skill-percentage">56%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-code-box-fill text-xl text-pink-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">Python</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-pink-400 to-pink-500 h-3 rounded-full progress-bar" data-width="75%"></div>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-item relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-code-s-slash-fill text-xl text-blue-400 neon-text"></i>
+                            <p class="text-sm md:text-base text-gray-300">TypeScript</p>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-3 relative overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-3 rounded-full progress-bar" data-width="43%"></div>
+                            <span class="skill-percentage">43%</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-css3-fill text-xl text-blue-400"></i>
-                <p class="text-sm md:text-base text-gray-300">CSS3</p>
+            <div class="enhanced-card tilt-card p-4 md:p-6 rounded-lg mb-6 md:mb-8 holographic">
+                <h2 class="text-lg md:text-xl font-mono text-blue-400 mb-4 md:mb-6 neon-text"># Tools & Technologies</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 justify-items-center">
+                    <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center">
+                        <i class="ri-github-fill text-xl md:text-2xl text-purple-400"></i>
+                        <p class="mt-1 md:mt-2 text-[10px] md:text-xs">GitHub</p>
+                    </div>
+
+                    <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center">
+                        <i class="ri-terminal-box-fill text-xl md:text-2xl text-yellow-400"></i>
+                        <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Terminal</p>
+                    </div>
+
+                    <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center">
+                        <i class="ri-code-s-slash-fill text-xl md:text-2xl text-orange-400"></i>
+                        <p class="mt-1 md:mt-2 text-[10px] md:text-xs">VS Code</p>
+                    </div>
+
+                    <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center">
+                        <i class="ri-windows-fill text-xl md:text-2xl text-blue-400"></i>
+                        <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Windows</p>
+                    </div>
+
+                    <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center">
+                        <i class="ri-discord-fill text-xl md:text-2xl text-purple-400"></i>
+                        <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Discord</p>
+                    </div>
+                </div>
             </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="45%"></div>
+
+            <div class="enhanced-card p-4 md:p-6 rounded-lg mb-6 md:mb-8">
+                <div class="max-w-2xl mx-auto">
+                    <div class="spotify-container bg-[#1A1A1A] rounded-xl p-4 shadow-lg border border-[#2A2A2A]">
+                        <iframe id="spotifyEmbed" 
+                                style="border-radius:12px" 
+                                src="https://open.spotify.com/embed/playlist/7ahndGZ8vHDYZ2oCIsv8rm?utm_source=generator" 
+                                width="100%" 
+                                height="352" 
+                                frameBorder="0" 
+                                allowfullscreen="" 
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-javascript-fill text-xl text-yellow-400"></i>
-                <p class="text-sm md:text-base text-gray-300">JavaScript</p>
+            <div class="flex flex-col items-center space-y-4">
+                <a href="https://www.instagram.com/dissxyzlegendary" class="contact-link text-2xl md:text-3xl hover:text-pink-400 transition-all duration-300">
+                    <i class="ri-instagram-line neon-text"></i>
+                </a>
             </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-yellow-400 h-2.5 rounded-full progress-bar" data-width="43%"></div>
-            </div>
-        </div>
-
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-database-2-fill text-xl text-green-400"></i>
-                <p class="text-sm md:text-base text-gray-300">SQL</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-green-400 h-2.5 rounded-full progress-bar" data-width="56%"></div>
-            </div>
-        </div>
-
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-code-box-fill text-xl text-pink-400"></i>
-                <p class="text-sm md:text-base text-gray-300">Python</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-pink-400 h-2.5 rounded-full progress-bar" data-width="75%"></div>
-            </div>
-        </div>
-
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-code-s-slash-fill text-xl text-blue-400"></i>
-                <p class="text-sm md:text-base text-gray-300">TypeScript</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="43%"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
-    <h2 class="text-lg md:text-xl font-mono text-blue-400 mb-4 md:mb-6"># Tools & Technologies</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 justify-items-center">
-
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-github-fill text-xl md:text-2xl text-purple-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">GitHub</p>
-        </div>
-
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-terminal-box-fill text-xl md:text-2xl text-yellow-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Terminal</p>
-        </div>
-
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-code-s-slash-fill text-xl md:text-2xl text-orange-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">VS Code</p>
-        </div>
-
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-windows-fill text-xl md:text-2xl text-blue-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Windows</p>
-        </div>
-
-        <div class="tool-card p-3 md:p-4 bg-[#1E293B] rounded-lg text-center hover:bg-[#2E3B4B] transition-colors">
-            <i class="ri-discord-fill text-xl md:text-2xl text-purple-400"></i>
-            <p class="mt-1 md:mt-2 text-[10px] md:text-xs">Discord</p>
-        </div>
-    </div>
-</div>
-
-<div class="bg-[#0F172A] p-4 md:p-6 rounded-lg mb-6 md:mb-8">
-    <div class="max-w-2xl mx-auto">
-
-        <div id="spotifyContainer" class="bg-[#1A1A1A] rounded-xl p-4 shadow-lg border border-[#2A2A2A]">
-
-            <iframe id="spotifyEmbed" 
-                    style="border-radius:12px" 
-                    src="https://open.spotify.com/embed/playlist/7ahndGZ8vHDYZ2oCIsv8rm?utm_source=generator" 
-                    width="100%" 
-                    height="352" 
-                    frameBorder="0" 
-                    allowfullscreen="" 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy">
-            </iframe>
-        </div>
-    </div>
-</div>
-
-<div class="flex flex-col items-center space-y-4">
-
-    <a href="https://www.instagram.com/dissxyzlegendary" class="contact-link text-2xl md:text-3xl hover:text-pink-400 transition-all duration-300 hover:-translate-y-1">
-        <i class="ri-instagram-line"></i>
-    </a>
-</div>
         </div>
     </div>
     </div>
@@ -343,114 +744,265 @@
     </div>
     
     <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
 
-    let trails = [];
-    let trailCount = 0;
-    let mouseX = 1;
-    let mouseY = 1;
-    
-    document.addEventListener('mousemove', function(e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    
-    setInterval(function() {
-        if (mouseX !== 0 && mouseY !== 0) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            
-            const offsetX = (Math.random() - 0.5) * 6;
-            const offsetY = (Math.random() - 0.5) * 6;
-            
-            trail.style.left = (mouseX + offsetX) + 'px';
-            trail.style.top = (mouseY + offsetY) + 'px';
-            
-            if (trailCount % 3 === 0) trail.classList.add('large');
-            else if (trailCount % 2 === 0) trail.classList.add('small');
-            
-            document.body.appendChild(trail);
-            trails.push(trail);
-            trailCount++;
-            
-            setTimeout(() => {
-                if (trail.parentNode) {
-                    trail.parentNode.removeChild(trail);
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#ec4899';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
                 }
-                trails = trails.filter(t => t !== trail);
-            }, 4000);
-            
-            if (trails.length > 20) {
-                const oldTrail = trails.shift();
-                if (oldTrail.parentNode) {
-                    oldTrail.parentNode.removeChild(oldTrail);
-                }
+                drops[i]++;
             }
         }
-    }, 80);
 
-    function animateProgressBars() {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        progressBars.forEach(bar => {
-            const targetWidth = bar.getAttribute('data-width');
+        setInterval(drawMatrix, 100);
+
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Enhanced cursor trail
+        let trails = [];
+        let trailCount = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        setInterval(function() {
+            if (mouseX !== 0 && mouseY !== 0) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                
+                const offsetX = (Math.random() - 0.5) * 8;
+                const offsetY = (Math.random() - 0.5) * 8;
+                
+                trail.style.left = (mouseX + offsetX) + 'px';
+                trail.style.top = (mouseY + offsetY) + 'px';
+                
+                document.body.appendChild(trail);
+                trails.push(trail);
+                trailCount++;
+                
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.parentNode.removeChild(trail);
+                    }
+                    trails = trails.filter(t => t !== trail);
+                }, 3000);
+                
+                if (trails.length > 25) {
+                    const oldTrail = trails.shift();
+                    if (oldTrail.parentNode) {
+                        oldTrail.parentNode.removeChild(oldTrail);
+                    }
+                }
+            }
+        }, 50);
+
+        // Floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+            particle.style.animationDuration = Math.random() * 5 + 8 + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(particle);
+            
             setTimeout(() => {
-                bar.style.width = targetWidth;
-            }, 500);
-        });
-    }
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 13000);
+        }
 
-    function updateClock() {
-        const now = new Date();
-        
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        
-        document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds}`;
-    }
+        setInterval(createParticle, 2000);
 
-    document.addEventListener('DOMContentLoaded', function() {
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach((bar, index) => {
+                const targetWidth = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 500 + (index * 200));
+            });
+        }
 
-        updateClock();
-        setInterval(updateClock, 1000);
-        
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
+        function updateClock() {
+            const now = new Date();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('digitalClock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
 
-        document.addEventListener('selectstart', function(e) {
-            e.preventDefault();
-            return false;
-        });
+        // Add sparkle effects on hover
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = '#ffffff';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '10000';
+            sparkle.style.animation = 'sparkle 1s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 1000);
+        }
 
-        document.addEventListener('keydown', function(e) {
-
-            if (e.keyCode === 123 || 
-                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) ||
-                (e.ctrlKey && e.keyCode === 85) ||
-                (e.ctrlKey && e.keyCode === 83) || 
-                (e.ctrlKey && e.keyCode === 65) || 
-                (e.ctrlKey && e.keyCode === 67) || 
-                (e.ctrlKey && e.keyCode === 88) || 
-                (e.ctrlKey && e.keyCode === 86) || 
-                (e.ctrlKey && e.keyCode === 80)) { 
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Disable context menu and selection
+            document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 return false;
+            });
+
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Enhanced keyboard shortcuts blocking
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === 123 || 
+                    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) ||
+                    (e.ctrlKey && e.keyCode === 85) ||
+                    (e.ctrlKey && e.keyCode === 83) || 
+                    (e.ctrlKey && e.keyCode === 65) || 
+                    (e.ctrlKey && e.keyCode === 67) || 
+                    (e.ctrlKey && e.keyCode === 88) || 
+                    (e.ctrlKey && e.keyCode === 86) || 
+                    (e.ctrlKey && e.keyCode === 80)) { 
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Clear console periodically
+            setInterval(function() {
+                console.clear();
+            }, 1000);
+
+            // Add sparkle effects to tool cards
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.addEventListener('mouseenter', function(e) {
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            const rect = e.target.getBoundingClientRect();
+                            const x = rect.left + Math.random() * rect.width;
+                            const y = rect.top + Math.random() * rect.height;
+                            createSparkle(x, y);
+                        }, i * 100);
+                    }
+                });
+            });
+
+            // Add parallax effect to profile image
+            document.addEventListener('mousemove', function(e) {
+                const profileImg = document.querySelector('.profile-image');
+                if (profileImg) {
+                    const rect = profileImg.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    const angleX = (e.clientY - centerY) / 30;
+                    const angleY = (centerX - e.clientX) / 30;
+                    
+                    profileImg.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+                }
+            });
+
+            // Reset profile image transform when mouse leaves
+            document.addEventListener('mouseleave', function() {
+                const profileImg = document.querySelector('.profile-image');
+                if (profileImg) {
+                    profileImg.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                }
+            });
+
+            animateProgressBars();
+
+            // Add typing effect to developer title
+            const devTitle = document.querySelector('.dev-title');
+            if (devTitle) {
+                const originalText = devTitle.innerHTML;
+                devTitle.innerHTML = '<span class="text-yellow-400 neon-text">def</span> <span class="gradient-text"></span>()';
+                
+                const targetSpan = devTitle.querySelector('.gradient-text');
+                const text = 'developer';
+                let i = 0;
+                
+                function typeWriter() {
+                    if (i < text.length) {
+                        targetSpan.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 150);
+                    }
+                }
+                
+                setTimeout(typeWriter, 2000);
             }
+
+            // Add random color shifts to neon elements
+            setInterval(() => {
+                const colors = ['#ec4899', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b'];
+                const neonElements = document.querySelectorAll('.neon-text');
+                neonElements.forEach(el => {
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    el.style.color = randomColor;
+                });
+            }, 5000);
         });
-
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        setInterval(function() {
-            console.clear();
-        }, 1000);
-
-        animateProgressBars();
-    });
     </script>
 </body>
 </html>
