@@ -175,7 +175,7 @@
                 0 0 0 1px rgba(0, 245, 255, 0.3);
         }
 
-        /* Skill bars enhancement */
+        /* Skill bars enhancement - แก้ไขตรงนี้ */
         .skill-item {
             transition: all 0.4s ease;
             padding: 12px;
@@ -191,8 +191,10 @@
         .progress-bar {
             position: relative;
             overflow: hidden;
-            transition: all 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 0%; /* เริ่มจาก 0% */
+            transition: width 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* เพิ่ม transition สำหรับ width */
             border-radius: 10px;
+            height: 100%;
         }
 
         .progress-bar::after {
@@ -517,7 +519,6 @@
                 0 0 35px currentColor;
         }
 
-        /* Holographic effect */
         .holographic {
             background: linear-gradient(45deg, 
                 transparent 30%, 
@@ -532,7 +533,6 @@
             100% { background-position: 200% 0; }
         }
 
-        /* Tilt effect */
         .tilt-card {
             transform-style: preserve-3d;
             transition: transform 0.4s ease;
@@ -542,7 +542,6 @@
             transform: perspective(1200px) rotateX(8deg) rotateY(8deg);
         }
 
-        /* Percentage display */
         .skill-percentage {
             position: absolute;
             right: 10px;
@@ -560,7 +559,6 @@
             opacity: 1;
         }
 
-        /* Breathing animation for main container */
         .breathing-container {
             animation: breathe 8s ease-in-out infinite;
         }
@@ -571,12 +569,12 @@
         }
 
         /* Custom progress bar colors */
-        .progress-html { background: linear-gradient(90deg, #e34c26, #f06529); }
+        .progress-html { background: linear-gradient(90deg, #e34c26, #ffac89); }
         .progress-css { background: linear-gradient(90deg, #1572b6, #33a9dc); }
-        .progress-js { background: linear-gradient(90deg, #f7df1e, #ffda44); }
-        .progress-sql { background: linear-gradient(90deg, #336791, #4285f4); }
-        .progress-python { background: linear-gradient(90deg, #3776ab, #ffd43b); }
-        .progress-typescript { background: linear-gradient(90deg, #3178c6, #007acc); }
+        .progress-js { background: linear-gradient(90deg, #ffcf30, #e4b809f6); }
+        .progress-sql { background: linear-gradient(90deg, #41b115, #07a537); }
+        .progress-python { background: linear-gradient(90deg, #c41cd3, #a11a96); }
+        .progress-typescript { background: linear-gradient(90deg, #3178c6, #06678d); }
 
         /* Enhanced color scheme for tools */
         .tool-github { color: #8b5cf6; }
@@ -590,6 +588,12 @@
         .text-secondary { color: var(--secondary); }
         .text-accent { color: var(--accent); }
         .text-purple { color: var(--purple); }
+
+        /* Progress bar animation keyframes */
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: var(--target-width); }
+        }
 
     </style>
 </head>
@@ -638,66 +642,72 @@
                 </h1>
             </div>
 
-                        <div class="enhanced-card tilt-card p-4 md:p-6 rounded-lg mb-6 md:mb-8 holographic">
+            <div class="enhanced-card tilt-card p-4 md:p-6 rounded-lg mb-6 md:mb-8 holographic">
                 <h2 class="text-lg md:text-xl font-mono text-pink-400 mb-4 md:mb-6"># Skills</h2>
                 <div class="space-y-4">
                     <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-html5-fill text-xl text-orange-400"></i>
-                <p class="text-sm md:text-base text-gray-300">HTML5</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-orange-400 h-2.5 rounded-full progress-bar" data-width="79%"></div>
-            </div>
-        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-html5-fill text-xl text-orange-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">HTML5</p>
+                            <span class="skill-percentage" data-percentage="79">79%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-html h-2.5 rounded-full" data-width="79"></div>
+                        </div>
+                    </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-css3-fill text-xl text-blue-400"></i>
-                <p class="text-sm md:text-base text-gray-300">CSS3</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="45%"></div>
-            </div>
-        </div>
+                    <div class="skill-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-css3-fill text-xl text-blue-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">CSS3</p>
+                            <span class="skill-percentage" data-percentage="45">45%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-css h-2.5 rounded-full" data-width="45"></div>
+                        </div>
+                    </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-javascript-fill text-xl text-yellow-400"></i>
-                <p class="text-sm md:text-base text-gray-300">JavaScript</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-yellow-400 h-2.5 rounded-full progress-bar" data-width="43%"></div>
-            </div>
-        </div>
+                    <div class="skill-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-javascript-fill text-xl text-yellow-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">JavaScript</p>
+                            <span class="skill-percentage" data-percentage="43">43%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-js h-2.5 rounded-full" data-width="43"></div>
+                        </div>
+                    </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-database-2-fill text-xl text-green-400"></i>
-                <p class="text-sm md:text-base text-gray-300">SQL</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-green-400 h-2.5 rounded-full progress-bar" data-width="56%"></div>
-            </div>
-        </div>
+                    <div class="skill-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-database-2-fill text-xl text-green-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">SQL</p>
+                            <span class="skill-percentage" data-percentage="56">56%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-sql h-2.5 rounded-full" data-width="56"></div>
+                        </div>
+                    </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-code-box-fill text-xl text-pink-400"></i>
-                <p class="text-sm md:text-base text-gray-300">Python</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-pink-400 h-2.5 rounded-full progress-bar" data-width="75%"></div>
-            </div>
-        </div>
+                    <div class="skill-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-code-box-fill text-xl text-pink-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">Python</p>
+                            <span class="skill-percentage" data-percentage="75">75%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-python h-2.5 rounded-full" data-width="75"></div>
+                        </div>
+                    </div>
 
-        <div class="skill-item">
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ri-code-s-slash-fill text-xl text-blue-400"></i>
-                <p class="text-sm md:text-base text-gray-300">TypeScript</p>
-            </div>
-            <div class="w-full bg-[#1E293B] rounded-full h-2.5">
-                <div class="bg-blue-400 h-2.5 rounded-full progress-bar" data-width="43%"></div>
+                    <div class="skill-item">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="ri-code-s-slash-fill text-xl text-blue-400"></i>
+                            <p class="text-sm md:text-base text-gray-300">TypeScript</p>
+                            <span class="skill-percentage" data-percentage="43">43%</span>
+                        </div>
+                        <div class="w-full bg-[#1E293B] rounded-full h-2.5">
+                            <div class="progress-bar progress-typescript h-2.5 rounded-full" data-width="43"></div>
                         </div>
                     </div>
                 </div>
@@ -760,7 +770,7 @@
     </div>
     
     <div class="text-center mt-4 pb-4">
-        <div class="text-white text-base font-mono" id="digitalClock">
+        <div class="text-white text-base font-mono digital-clock" id="digitalClock">
             00:41:45
         </div>
     </div>
@@ -823,7 +833,6 @@
         });
 
         setInterval(function() {
-
             if (mouseX !== 0 && mouseY !== 0 && (mouseX !== lastMouseX || mouseY !== lastMouseY)) {
                 const trail = document.createElement('div');
                 trail.className = 'cursor-trail';
@@ -852,10 +861,10 @@
                     const oldTrail = trails.shift();
                     if (oldTrail.parentNode) {
                         oldTrail.parentNode.removeChild(oldTrail);
+                    }
                 }
             }
-        }
-    }, 60);
+        }, 60);
 
         // Floating particles
         function createParticle() {
@@ -880,12 +889,13 @@
 
         setInterval(createParticle, 3000);
 
+        // แก้ไข function สำหรับ animate progress bars
         function animateProgressBars() {
             const progressBars = document.querySelectorAll('.progress-bar');
             progressBars.forEach((bar, index) => {
                 const targetWidth = bar.getAttribute('data-width');
                 setTimeout(() => {
-                    bar.style.width = targetWidth;
+                    bar.style.width = targetWidth + '%'; // เพิ่ม % ที่ท้าย
                 }, 800 + (index * 300));
             });
         }
@@ -908,7 +918,7 @@
             sparkle.style.top = y + 'px';
             sparkle.style.width = '4px';
             sparkle.style.height = '4px';
-            sparkle.style.background = '#ffffff';  // สีขาวตรงนี้
+            sparkle.style.background = '#ffffff';
             sparkle.style.borderRadius = '50%';
             sparkle.style.pointerEvents = 'none';
             sparkle.style.zIndex = '10000';
@@ -1001,6 +1011,7 @@
                 }
             });
 
+            // เรียก function สำหรับ animate progress bars
             animateProgressBars();
 
             // Add typing effect to developer title
